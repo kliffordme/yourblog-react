@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+  }
+  .toast-body {
+    font-size: 11.375px;
+    font-family: "Poppins", Helvetica, sans-serif;
+  }
+  .toast-title {
+    font-size: 11.375px;
+    font-weight: bold;
+  }
+
+ 
