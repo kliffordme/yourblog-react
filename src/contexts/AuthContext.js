@@ -19,7 +19,6 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate()
     const login = async(email, password) => {
         console.log(email, password)
-        // const data = await axios.post('http://localhost:8000/api/users/login', formData)
         const data = await
         axios({
           method: 'post',

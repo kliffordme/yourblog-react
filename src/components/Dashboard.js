@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import { CustomToast } from './helpers/CustomToast'
 import { Posts } from './helpers/Posts'
 import { FollowedPosts } from './helpers/FollowedPosts'
+import { axiosV1 } from '../utils/axios/axios'
 
 
 const Dashboard = () => {
@@ -96,7 +97,6 @@ const Dashboard = () => {
     useEffect(()=>{
         fetchPosts()
         fetchUser()
-        fetchComments()
     },[])
 
     const onDelete = async(id) => {
@@ -148,21 +148,6 @@ const Dashboard = () => {
     }
 
 
-    const fetchComments = async() =>{
-        const res = await
-        axios({
-          method: 'get',
-          url: `http://localhost:8000/api/comments/`,
-          headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`
-          },
-        });
-        console.log(res)
-    }
-
-
-
-
     return (
     <div className='min-vh-100'>
         <div className='pb-4'>
@@ -188,8 +173,8 @@ const Dashboard = () => {
 
             <div className='flex-fill p-2 bg-dark border-top-0 border border-secondary text-white py-5 w-50'>
                 <div className='d-flex m-auto w-50 mt-3' >
-                    <Button onClick={()=>setPublicPosts(true)} className='m-2' variant="outline-secondary">PUBLIC POSTS</Button>
-                    <Button onClick={()=>setPublicPosts(false)} className='m-2' variant="outline-secondary" >FOLLOWED POSTS</Button>
+                    <Button onClick={()=>setPublicPosts(true)} className={`m-2 ${publicPosts ? 'text-white' : ''}`} variant="outline-secondary">PUBLIC POSTS</Button>
+                    <Button onClick={()=>setPublicPosts(false)} className={`m-2 ${publicPosts ? '' : 'text-white'}`} variant="outline-secondary" >FOLLOWED POSTS</Button>
                 </div>
                 {publicPosts === true ? <div>
                     <input onClick={()=>setShow(!show)} style={{cursor:'pointer'}} class="form-control w-75 m-auto my-3 bg-dark border-secondary" type="text" placeholder="Write something…" readOnly></input>

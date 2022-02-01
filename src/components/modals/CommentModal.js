@@ -21,10 +21,10 @@ export const CommentModal = ({user, name, likes, post, comments, user_id, fetchP
           {user.name}'s post
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className='bg-dark text-white border-bottom-0 border-top-0 border border-secondary'>
+      <Modal.Body className='bg-dark text-white border-bottom-0 border-top-0 border border-secondary  px-0'>
         <div className='m-auto w-75'>
-          <p className='m-3 p-3'>
-            {post}
+          <p className='my-3 py-3'>
+            : {post}
           </p>
           {likes ? <span>
             likes : {likes}
