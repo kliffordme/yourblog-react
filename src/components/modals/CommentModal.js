@@ -22,14 +22,14 @@ export const CommentModal = ({user, name, likes, post, comments, user_id, fetchP
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className='bg-dark text-white border-bottom-0 border-top-0 border border-secondary  px-0'>
-        <div className='m-auto w-75'>
+        <div className='m-auto w-75 py-3'>
           <p className='my-3 py-3'>
-            : {post}
+           {post}
           </p>
           {likes ? <span>
             likes : {likes}
           </span> : ''}
-          <div class="input-group mb-3">
+          <div class="input-group mb-3 pt-2">
                       <input type="text" value={comment} onChange={(e)=>setComment(e.target.value)} class="form-control bg-dark text-white border-secondary my-1 p-1" placeholder="Write a comment..."/>
                       <button onClick={()=>onComment(comments.id, name, user_id, fetchPosts)} class="btn btn-outline-secondary my-1 py-1" style={{zIndex:0}} type="button">Post</button>
           </div>

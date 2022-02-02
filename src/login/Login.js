@@ -1,18 +1,17 @@
-import React,{useState} from 'react'
-import {Form, Button, Card} from 'react-bootstrap'
+import React,{useState, useEffect} from 'react'
+import {Form, Button, Card, Nav} from 'react-bootstrap'
 import axios from 'axios'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import { useAuthContext } from '../contexts/AuthContext'
 
 
 const Login = () => {
-    const navigate = useNavigate()
     const {login} = useAuthContext()
     const [formData, setFormData] = useState({
         email : '',
         password: '',
     })
-    
+
     const formHandler = (key, value) => {
         setFormData({
           ...formData,

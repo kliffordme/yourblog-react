@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify'
 
 
 function App() {
+
   return (
     <Router>
       <AuthContextProvider>
@@ -18,7 +19,7 @@ function App() {
           <Route path="/" exact element={<PrivateRoute/>} >
             <Route path="/" exact element={<Dashboard/>}/>
           </Route>
-          <Route path="/login" element={<Login/>} />
+          <Route path="/login" exact element={<Login/>} />
           <Route path="/register" element={<SignUp/>} />
         </Routes>
         </PostContextProvider>

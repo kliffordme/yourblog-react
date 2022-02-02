@@ -26,7 +26,7 @@ export const Posts = ({name, user_id, fetchPosts, onDelete, editPost}) => {
                             fetchPosts={fetchPosts}
                             />
                         </div>
-                        <div>
+                        <div className='mb-3'>
                             <Comments 
                             post={post} 
                             name={name}

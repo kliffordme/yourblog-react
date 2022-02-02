@@ -8,8 +8,8 @@ import { toast, ToastContainer } from 'react-toastify'
 import { CustomToast } from './helpers/CustomToast'
 import { Posts } from './helpers/Posts'
 import { FollowedPosts } from './helpers/FollowedPosts'
-import { axiosV1 } from '../utils/axios/axios'
-
+import { Users } from './helpers/Users'
+import { axiosV1 } from '../utils'
 
 const Dashboard = () => {
     const [show, setShow] = useState(false);
@@ -69,7 +69,7 @@ const Dashboard = () => {
             type: "GET_ALL_POSTS",
             payload: res.data,
         })
-        console.log(res)
+        // console.log(res)
     }
 
     const closeModal = () => {
@@ -176,7 +176,7 @@ const Dashboard = () => {
                     <Button onClick={()=>setPublicPosts(true)} className={`m-2 ${publicPosts ? 'text-white' : ''}`} variant="outline-secondary">PUBLIC POSTS</Button>
                     <Button onClick={()=>setPublicPosts(false)} className={`m-2 ${publicPosts ? '' : 'text-white'}`} variant="outline-secondary" >FOLLOWED POSTS</Button>
                 </div>
-                {publicPosts === true ? <div>
+                {publicPosts === true ? <div >
                     <input onClick={()=>setShow(!show)} style={{cursor:'pointer'}} class="form-control w-75 m-auto my-3 bg-dark border-secondary" type="text" placeholder="Write something…" readOnly></input>
                     <Posts 
                     name={name}    
@@ -194,7 +194,7 @@ const Dashboard = () => {
             </div>
             <div className='flex-fill bg-dark text-white py-5 w-25 position-relative'>
                 <div className='m-auto'>
-                    {/* people you may know:  */}
+                    <Users user_id={user_id} />
                 </div>
             </div>
         </div>
