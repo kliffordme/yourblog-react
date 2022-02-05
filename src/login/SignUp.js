@@ -42,38 +42,40 @@ const onSubmit = async(e) => {
 
     return (
         <div>
-        <Card className='vh-100'>
-            <div className='mw-25 m-auto position-relative border rounded'>
+        <Card className='vh-100 bg-dark'>
+            <div className='bg-dark text-white border-secondary m-auto position-relative border rounded p-5'>
                 <Card.Header>
-                    Register to Blog App
+                    <h4>Register to YourBlog</h4>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className='border-top border-secondary'>
                     <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onChange={(e)=>formHandler('email', e.target.value)} />
+                        <Form.Control  className='bg-dark border-secondary text-white' required type="email" placeholder="Enter email" onChange={(e)=>formHandler('email', e.target.value)} />
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="name" placeholder="Name" onChange={(e)=>formHandler('name', e.target.value)} />
+                        <Form.Control className='bg-dark border-secondary text-white' required type="name" placeholder="Name" onChange={(e)=>formHandler('name', e.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={(e)=>formHandler('password', e.target.value)} />
+                        <Form.Control className='bg-dark border-secondary text-white' required type="password" placeholder="Password" onChange={(e)=>formHandler('password', e.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={(e)=>formHandler('rptPassword', e.target.value)} />
+                        <Form.Control className='bg-dark border-secondary text-white' required type="password" placeholder="Password" onChange={(e)=>formHandler('rptPassword', e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <div className='d-flex justify-content-between pt-3'>
+                    <Button variant="outline-secondary text-white" className='mt-1' type="submit">
                         Submit
                     </Button>
-                    <span className='position-absolute end-0 m-3'>
-                        <Link to='/login'>Log-in</Link>
+                    <span className='mt-2'>
+                        <Link to='/login' className='text-white'>Log-in</Link>
                     </span>
+                    </div>
                     </Form>
                 </Card.Body>
 
