@@ -13,8 +13,22 @@ code {
 }
 
 #inputID::placeholder {
+  color: white;
+}
+
+#white{
+  color: white;
+}
+
+#nav-bar{
+  z-index: 1;
+  background-color: #000000 ;
+
+}
+
+#black{
   color: #faf6f5;
-  opacity: 1;
+  background-color: #313035;
 }
 
 .btn-close{

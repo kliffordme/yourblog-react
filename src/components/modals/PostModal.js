@@ -7,11 +7,11 @@ import { toast } from 'react-toastify'
 
 const PostModal = ({show, closeModal, fetchPosts, formHandler, user_id, formData, name, setChars}) => {
 
-
+    const [loading, setLoading] = useState(false)
 
     const onSubmit = async(e) => {
         e.preventDefault()
-
+        setLoading(true)
         try{
             const res = await axios({
                 method: formData.id ? 'put' : 'post',
@@ -19,7 +19,7 @@ const PostModal = ({show, closeModal, fetchPosts, formHandler, user_id, formData
                     user_id: user_id,
                     post: formData.post,
                },
-                url: formData.id ? `http://localhost:8000/api/posts/${formData.id}` : 'http://localhost:8000/api/posts',
+                url: formData.id ? `https://yourblog-api.herokuapp.com/api/posts/${formData.id}` : 'https://yourblog-api.herokuapp.com/api/posts',
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
@@ -37,14 +37,14 @@ const PostModal = ({show, closeModal, fetchPosts, formHandler, user_id, formData
                   })
               }
 
-              console.log(res.data.success)
+              console.log(res)
         }catch(e){
             console.log(e)
         }
 
 
         
-
+        setLoading(false)
         fetchPosts()
         closeModal()  
     }
@@ -63,15 +63,15 @@ const PostModal = ({show, closeModal, fetchPosts, formHandler, user_id, formData
                     {formData.id ? name : ''}
                     </div>
                 <Form.Group className="m-auto " controlId="formBasicEmail">
-                <textarea placeholder='write something...' maxLength={140} defaultValue={formData.post} className="form-control bg-dark text-white border-secondary" id="inputID" rows="3" onChange={(e)=>(formHandler('post', e.target.value), setChars(e.target.value.length))}/>
+                <textarea placeholder='write something...' maxLength={140} defaultValue={formData.post} className="form-control bg-dark text-white border-secondary" id="inputID" rows="3" onChange={(e)=>(formHandler('post', e.target.value))}/>
                 </Form.Group>
                 </Modal.Body>
 
                 <Modal.Footer className='bg-dark border-secondary border-top-0'>
-                <Button variant="secondary" onClick={closeModal}>
+                <Button id="white" variant="outline-secondary" onClick={closeModal}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={onSubmit}>
+                <Button variant="outline-secondary" id="white" disabled={loading} onClick={onSubmit}>
                     Save Changes
                 </Button>
                 </Modal.Footer>

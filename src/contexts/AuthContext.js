@@ -22,7 +22,7 @@ export const AuthContextProvider = ({children}) => {
         const data = await
         axios({
           method: 'post',
-          url: 'http://localhost:8000/api/users/login',
+          url: 'https://yourblog-api.herokuapp.com/api/users/login',
           data: {email: email, password: password},
         });
         console.log(data)

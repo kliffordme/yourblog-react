@@ -16,7 +16,7 @@ export const useCommentHook = () => {
                   commenter: name,
                   comment: comment
             },
-              url: `http://localhost:8000/api/comments/`,
+              url: `https://yourblog-api.herokuapp.com/api/comments`,
               headers: {
                   Authorization: `Bearer ${localStorage.getItem('token')}`
               },
@@ -34,7 +34,7 @@ export const useCommentHook = () => {
             const res = await
             axios({
               method: 'delete',
-              url: `http://localhost:8000/api/comments/${id}`,
+              url: `https://yourblog-api.herokuapp.com/api/comments/${id}`,
               headers: {
                   Authorization: `Bearer ${localStorage.getItem('token')}`
               },

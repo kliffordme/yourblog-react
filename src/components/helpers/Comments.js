@@ -16,9 +16,9 @@ export const Comments = ({post, name, user_id, fetchPosts}) => {
 
     return <>
             <div>
-                <div class="input-group my-3">
-                    <input type="text" value={comment} onChange={(e)=>setComment(e.target.value)} class="form-control bg-dark text-white border-secondary my-1 p-1" placeholder="Write a comment..."/>
-                    <button onClick={()=>onComment(post.id, name, user_id, fetchPosts)} class="btn btn-outline-secondary my-1 py-1" style={{zIndex:0}} type="button">Post</button>
+                <div className="input-group my-3">
+                    <input type="text" value={comment} onChange={(e)=>setComment(e.target.value)} className="form-control bg-dark text-white border-secondary my-1 p-1" placeholder="Write a comment..."/>
+                    <button id="white" onClick={()=>onComment(post.id, name, user_id, fetchPosts)} className="btn btn-outline-secondary my-1 py-1" style={{zIndex:0}} type="button">Post</button>
                 </div>
             </div>
                 <div>
@@ -30,7 +30,7 @@ export const Comments = ({post, name, user_id, fetchPosts}) => {
                         <button 
                         onClick={()=>deleteComment(comment.id, fetchPosts)}
                         type="button" 
-                        class="btn-close btn-close-white btn-sm p-0 mt-1 m-0 position-absolute top-0 end-0" 
+                        className="btn-close btn-close-white btn-sm p-0 mt-1 m-0 position-absolute top-0 end-0" 
                         aria-label="Close">
                         </button> : ''
                         }                               

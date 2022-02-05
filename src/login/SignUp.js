@@ -29,7 +29,7 @@ const onSubmit = async(e) => {
     }
     const data = await axios({
         method: 'post',
-        url: 'http://localhost:8000/api/users/register',
+        url: 'https://yourblog-api.herokuapp.com/api/users/register',
         data: {
             email: formData.email,
             name: formData.name,

@@ -10,7 +10,7 @@ export const Posts = ({name, user_id, fetchPosts, onDelete, editPost}) => {
     const { posts, post } = postState;
 
   return <div>
-      {posts.length > 0 ? posts.map((post)=>(<Card key={post.id} className='shadow-lg p-4 w-75 m-auto bg-dark border-secondary position-relative my-3 text-white'>
+      {posts.length > 0 ? posts.map((post)=>(<Card key={post.id} id="black" className=' shadow-lg p-4 w-75 m-auto position-relative my-3'>
                         <Follow post={post} user_id={user_id} fetchPosts={fetchPosts} />
                         <div className='p-3 rounded m-2'>
                         {post.post}

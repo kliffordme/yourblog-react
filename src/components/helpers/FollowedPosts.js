@@ -20,20 +20,19 @@ export const FollowedPosts = ({name, user_id, fetchPosts, onDelete, editPost}) =
     const fetchFollowers = async() => {
         const res = await axios({
             method: 'get',
-            url: 'http://localhost:8000/api/followers',
+            url: 'https://yourblog-api.herokuapp.com/api/followers',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
         })
 
         setFollower(res.data)
-        console.log(res)
     }
 
   return <div>
       {hasFollowing ? posts.map((post)=>(
           post.follow.filter((follow) => {return follow.follower === user_id}).map(follow => follow.follower)[0] === user_id ? 
-          <Card key={post.id} className='shadow-lg p-4 w-75 m-auto bg-dark border-secondary position-relative my-3 text-white'>
+          <Card key={post.id} id="black" className='shadow-lg p-4 w-75 m-auto position-relative my-3 '>
                         <Follow post={post} user_id={user_id} fetchPosts={fetchPosts} />
                         <div className='p-3 rounded m-2'>
                         {post.post}
@@ -66,6 +65,6 @@ export const FollowedPosts = ({name, user_id, fetchPosts, onDelete, editPost}) =
                             </Dropdown.Menu>
                         </Dropdown>
                         : null}
-                    </Card> : '')) : <div className=' w-75 mt-5 m-auto'>Posts from people you followed should appear here.</div>}
+                    </Card> : '')) : <div className='m-auto mt-5 w-50'>Posts from people you followed should appear here.</div>}
   </div>;
 };

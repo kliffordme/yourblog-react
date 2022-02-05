@@ -7,12 +7,13 @@ export const LikeCommentButton = ({post, user_id, name, fetchPosts}) => {
     const [loading, setLoading] = useState(false)
 
     const onLike = async(id) => {
+        console.log(user_id)
         setLoading(true)
         try{
             const res = await
             axios({
               method: 'post',
-              url: 'http://localhost:8000/api/likes/',
+              url: 'https://yourblog-api.herokuapp.com/api/likes',
               data: {
                   post_id: id,
                   user_id: user_id,
@@ -21,10 +22,11 @@ export const LikeCommentButton = ({post, user_id, name, fetchPosts}) => {
                   Authorization: `Bearer ${localStorage.getItem('token')}`
               },
             });
+            console.log(res)
             fetchPosts()
 
         }catch(e){
-            console.log(e)
+            console.log(e.response)
 
         }
         setLoading(false)
@@ -45,7 +47,7 @@ export const LikeCommentButton = ({post, user_id, name, fetchPosts}) => {
                   user_id: user_id,
                   post_id: id
             },
-              url: `http://localhost:8000/api/likes/${like_id[0]}`,
+              url: `https://yourblog-api.herokuapp.com/api/likes/${like_id[0]}`,
               headers: {
                   Authorization: `Bearer ${localStorage.getItem('token')}`
               },
@@ -63,9 +65,9 @@ export const LikeCommentButton = ({post, user_id, name, fetchPosts}) => {
   return <div>
             <div className='d-flex'>
                 <button 
-                class={`btn btn-outline-secondary m-1 px-4 py-0 ${post.like.map((like)=>like.user_id).filter((like)=>{return like === user_id})[0] === user_id ? 'bg-secondary text-white': null}`} 
+                className={`btn btn-outline-secondary m-1 px-4 py-0 ${post.like.map((like)=>like.user_id).filter((like)=>{return like === user_id})[0] === user_id ? 'bg-secondary text-white': null}`} 
                 type="button" 
-                id="button-addon2"
+                id="white"
                 onClick={post.like.map((like)=>like.user_id).filter((like)=>{return like === user_id})[0] === user_id ? 
                 ()=>deleteLike(post.id, 
                 post.like.map((e)=> e.id), 

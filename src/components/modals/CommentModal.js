@@ -9,7 +9,7 @@ export const CommentModal = ({user, name, likes, post, comments, user_id, fetchP
   const {onComment, comment, setComment, deleteComment} = useCommentHook()
   // console.log(data.map((comment) => comment.comment))
   return <div>
-    <Button onClick={()=>setShow(!show)} className='py-0 m-1' variant="outline-secondary">Comment</Button>
+    <Button onClick={()=>setShow(!show)} id="white" className='py-0 m-1' variant="outline-secondary">Comment</Button>
 
     <Modal show={show}
       onHide={closeModal}
@@ -29,9 +29,9 @@ export const CommentModal = ({user, name, likes, post, comments, user_id, fetchP
           {likes ? <span>
             likes : {likes}
           </span> : ''}
-          <div class="input-group mb-3 pt-2">
-                      <input type="text" value={comment} onChange={(e)=>setComment(e.target.value)} class="form-control bg-dark text-white border-secondary my-1 p-1" placeholder="Write a comment..."/>
-                      <button onClick={()=>onComment(comments.id, name, user_id, fetchPosts)} class="btn btn-outline-secondary my-1 py-1" style={{zIndex:0}} type="button">Post</button>
+          <div className="input-group mb-3 pt-2">
+                      <input type="text" value={comment} onChange={(e)=>setComment(e.target.value)} className="form-control bg-dark text-white border-secondary my-1 p-1" placeholder="Write a comment..."/>
+                      <button id="white" onClick={()=>onComment(comments.id, name, user_id, fetchPosts)} className="btn btn-outline-secondary my-1 py-1" style={{zIndex:0}} type="button">Post</button>
           </div>
           <div >
             {data.map((comment) => 
@@ -41,7 +41,7 @@ export const CommentModal = ({user, name, likes, post, comments, user_id, fetchP
                 <button 
                 onClick={()=>deleteComment(comment.id, fetchPosts)}
                 type="button" 
-                class="btn-close btn-close-white btn-sm p-0 mt-3 m-0 position-absolute top-0 end-0" 
+                className="btn-close btn-close-white btn-sm p-0 mt-3 m-0 position-absolute top-0 end-0" 
                 aria-label="Close">
                 </button> : ''
                 } 
@@ -50,7 +50,7 @@ export const CommentModal = ({user, name, likes, post, comments, user_id, fetchP
         </div>
       </Modal.Body>
       <Modal.Footer className='bg-dark border-top-0 border border-secondary'>
-        <Button variant="outline-secondary" onClick={()=>setShow(!show)}>Close</Button>
+        <Button variant="outline-secondary" id="white" onClick={()=>setShow(!show)}>Close</Button>
       </Modal.Footer>
     </Modal>
   </div>;
