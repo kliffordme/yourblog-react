@@ -2,7 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react'
 import {Card, Button, Dropdown, Toast} from 'react-bootstrap'
 import PostModal from './modals/PostModal'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { usePostContext } from '../contexts/post-context/PostContext'
 import { toast, ToastContainer } from 'react-toastify'
 import { CustomToast } from './helpers/CustomToast'
@@ -169,7 +169,7 @@ const Dashboard = () => {
             <Dropdown className='pt-2 '>
                 <Dropdown.Toggle variant="dark" id="dropdown-basic"/>
                 <Dropdown.Menu variant='dark'>
-                    <Dropdown.Item href="#/action-1">View Profile</Dropdown.Item>
+                    <Dropdown.Item><Link to="/profile" id='nav-btn'>View Profile</Link></Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Edit Account</Dropdown.Item>
                     <Dropdown.Item onClick={onLogout}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
@@ -177,13 +177,13 @@ const Dashboard = () => {
         </div>
         </nav>
         </div>
-        <div className='d-flex justify-content-around min-vh-100'>
-            <div className='flex-fill bg-dark text-white py-5 w-25'>
+        <div id='main' className='d-flex justify-content-around min-vh-100'>
+            <div id='sides' className='flex-fill bg-dark text-white py-5 w-25'>
                 <Profile name={profile.name} email={profile.email}/>
             </div>
 
             <div className='flex-fill p-2 bg-dark border-top-0 text-white py-5 w-50'>
-                <div className='d-flex justify-content-around m-auto w-50 mt-3' >
+                <div className='m-auto w-75 mt-3' id='public-follow' >
                     <Button id="option-btn" onClick={()=>setPublicPosts(true)} className={`m-2 shadow-none ${publicPosts ? 'text-white' : ''}`} variant="outline-secondary border-0">PUBLIC POSTS</Button>
                     <Button id="option-btn" onClick={()=>setPublicPosts(false)} className={`m-2 shadow-none ${publicPosts ? '' : 'text-white'}`} variant="outline-secondary border-0" >FOLLOWED POSTS</Button>
                 </div>
@@ -206,7 +206,7 @@ const Dashboard = () => {
                 }
 
             </div>
-            <div className='flex-fill bg-dark text-white py-5 w-25 position-relative'>
+            <div className='flex-fill bg-dark text-white py-5 w-25 position-relative' id='sides'>
                 <div className='m-auto'>
                     <Users user_id={profile.id} fetchPosts={fetchPosts} />
                 </div>

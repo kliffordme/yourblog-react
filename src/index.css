@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+#nav-btn{
+  color: white;
+  text-decoration: none;
+}
+
 #inputID::placeholder {
   color: white;
 }
@@ -37,4 +42,17 @@ code {
 
 .btn-close{
   color: white;
+}
+
+#public-follow{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+@media (max-width:985px) {
+  #sides{
+    display: none;
+  }
+
 }

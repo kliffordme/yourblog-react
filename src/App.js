@@ -6,6 +6,7 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import {PostContextProvider} from "./contexts/post-context/PostContext"
 import { ToastContainer } from 'react-toastify'
+import {ProfileOverview} from './components/ProfileOverview'
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" exact element={<PrivateRoute/>} >
             <Route path="/" exact element={<Dashboard/>}/>
+            <Route path="/profile" element={<ProfileOverview/>} />
+
           </Route>
           <Route path="/login" exact element={<Login/>} />
           <Route path="/register" element={<SignUp/>} />
