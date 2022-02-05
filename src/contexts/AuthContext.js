@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect} from 'react'
+import React, {createContext, useContext, useState, useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,19 +17,26 @@ export const useAuthContext = () => {
 
 export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate()
+    const [errorMsg, setErrorMsg] = useState('')
     const login = async(email, password) => {
-        console.log(email, password)
-        const data = await
-        axios({
-          method: 'post',
-          url: 'https://yourblog-api.herokuapp.com/api/users/login',
-          data: {email: email, password: password},
-        });
-        console.log(data)
-        if(data.data.success){
-            localStorage.setItem('token', data.data.token)
-            navigate('/')
+
+        try{
+            const data = await
+            axios({
+              method: 'post',
+              url: 'https://yourblog-api.herokuapp.com/api/users/login',
+              data: {email: email, password: password},
+            });
+            console.log(data)
+            if(data.data.success){
+                localStorage.setItem('token', data.data.token)
+                navigate('/')
+            }
+        }catch(e){
+            console.log(e.response.data.message)
+            setErrorMsg(e.response.data.message)
         }
+
     }
 
     useEffect(()=>{
@@ -48,7 +55,8 @@ export const AuthContextProvider = ({children}) => {
         <AuthContext.Provider 
         value={{
             login,
-            isLogin
+            isLogin, 
+            errorMsg
         }}
         >
             {children}

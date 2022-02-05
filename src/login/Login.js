@@ -3,14 +3,16 @@ import {Form, Button, Card, Nav} from 'react-bootstrap'
 import axios from 'axios'
 import {Link, Navigate} from 'react-router-dom'
 import { useAuthContext } from '../contexts/AuthContext'
+import { ClipLoader } from 'react-spinners'
 
 
 const Login = () => {
-    const {login} = useAuthContext()
+    const {login, errorMsg} = useAuthContext()
     const [formData, setFormData] = useState({
         email : '',
         password: '',
     })
+    const [loading, setLoading] = useState(false)
 
     const formHandler = (key, value) => {
         setFormData({
@@ -21,11 +23,16 @@ const Login = () => {
 
     const onSubmit = async(e) => {
         e.preventDefault()
+        setLoading(true)
         try{
             const data = await login(formData.email, formData.password)
+            setLoading(false)
+
         }catch(e){
             console.log(e)
         }
+        setLoading(false)
+
     }
 
 
@@ -59,7 +66,12 @@ const Login = () => {
                     </div>
                     </Form>
                 </Card.Body>
-
+                <div className='w-75 m-auto'>
+                    {errorMsg}
+                </div>
+                <div className='w-25 m-auto text-black'>
+                    <ClipLoader size={50} loading={loading} color={'white'} width={100}/>
+                </div>
             </div>
         </Card>
     )
