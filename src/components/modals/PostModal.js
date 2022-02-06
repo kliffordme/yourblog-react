@@ -5,7 +5,7 @@ import { CustomToast } from '../helpers/CustomToast'
 import { toast } from 'react-toastify'
 
 
-const PostModal = ({show, closeModal, fetchPosts, formHandler, user_id, formData, name, setChars}) => {
+const PostModal = ({show, closeModal, fetchPosts, formHandler, user_id, formData, name}) => {
 
     const [loading, setLoading] = useState(false)
 
@@ -36,14 +36,12 @@ const PostModal = ({show, closeModal, fetchPosts, formHandler, user_id, formData
                     theme: 'dark'
                   })
               }
-
               console.log(res)
         }catch(e){
             console.log(e)
         }
 
 
-        
         setLoading(false)
         fetchPosts()
         closeModal()  

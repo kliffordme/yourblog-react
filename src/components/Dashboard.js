@@ -10,7 +10,6 @@ import { Posts } from './helpers/Posts'
 import { FollowedPosts } from './helpers/FollowedPosts'
 import { Users } from './helpers/Users'
 import { Profile } from './helpers/Profile'
-import { BeatLoader } from 'react-spinners'
 
 const Dashboard = () => {
     const [show, setShow] = useState(false);
@@ -25,7 +24,6 @@ const Dashboard = () => {
     const { postState, postDispatch } = usePostContext() 
     const { posts, post } = postState;
     const [publicPosts, setPublicPosts] = useState(true)
-    const [loading, setLoading] = useState(false)
 
     useMemo(()=>{
         setFormData({
@@ -62,9 +60,8 @@ const Dashboard = () => {
         })
     }
 
-    // https://yourblog-api.herokuapp.com/api/users/register
     const fetchPosts = async() => {
-        setLoading(true)
+        // setLoading(true)
         postDispatch({
             type: "FETCHING",
         })
@@ -80,7 +77,7 @@ const Dashboard = () => {
             type: "GET_ALL_POSTS",
             payload: res.data,
         })
-        setLoading(false)
+        // setLoading(false)
     }
 
     const closeModal = () => {
@@ -190,7 +187,6 @@ const Dashboard = () => {
                 {publicPosts === true ? <div >
                     <input onClick={()=>setShow(!show)} style={{cursor:'pointer'}} id="inputID" className="form-control w-75 m-auto my-3 bg-dark shadow-none border-secondary " type="text" placeholder="Write something…" readOnly></input>
                     <div className='d-flex justify-content-center'> 
-                    <BeatLoader color='white' loading={loading} size={15}/>
                     </div>
                     <Posts 
                     name={profile.name}    
