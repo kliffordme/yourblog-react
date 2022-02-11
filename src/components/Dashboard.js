@@ -175,7 +175,7 @@ const Dashboard = () => {
         </nav>
         </div>
         <div id='main' className='d-flex justify-content-around min-vh-100'>
-            <div id='sides' className='flex-fill bg-dark text-white py-5 w-25'>
+            <div id='sides' className='flex-fill bg-dark text-white p-5 w-25'>
                 <Profile name={profile.name} email={profile.email}/>
             </div>
 
